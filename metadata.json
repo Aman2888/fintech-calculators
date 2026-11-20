@@ -1,0 +1,6 @@
+{
+  "name": "CALCULATE",
+  "description": "Money Moves. Made Simple. Interactive 3D financial calculators for loans, payments, interest, amortization, auto financing, HELOCs, and compound wealth growth.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
