@@ -1,22 +1,17 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calculator, Lock, TrendingUp } from 'lucide-react';
 
 export function AboutPage() {
-  useEffect(() => {
-    document.title = 'About | CALCULATE';
-  }, []);
-
   return (
     <div className="bg-midnight-mesh min-h-screen text-white">
       <section className="border-b border-white/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-5">
-          <div className="text-xs font-semibold text-[#B4F434]">About CALCULATE</div>
+          <div className="text-xs font-semibold text-[#B4F434]">About EasyLoanCalc</div>
           <h1 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-white text-balance">
             Money Moves. Made Simple.
           </h1>
           <p className="text-lg text-slate-300 leading-relaxed max-w-3xl">
-            CALCULATE replaces cluttered loan forms with interactive 3D and visual financial
+            EasyLoanCalc replaces cluttered loan forms with interactive 3D and visual financial
             calculators that reveal exact borrowing costs, amortization timelines, and
             long-term compounding growth.
           </p>

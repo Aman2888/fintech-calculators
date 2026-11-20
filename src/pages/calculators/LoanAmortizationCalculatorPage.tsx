@@ -151,7 +151,7 @@ export function LoanAmortizationCalculatorPage() {
   };
 
   const copySummaryText = [
-    `CALCULATE — Loan Amortization Summary (${currencyInfo.code})`,
+    `EasyLoanCalc — Loan Amortization Summary (${currencyInfo.code})`,
     `Loan Amount: ${formatCurrency(loanAmount)}`,
     `Annual Rate: ${formatPercent(annualRate)}`,
     `Total Monthly Payment: ${formatCurrency(result.totalMonthlyPayment)}`,

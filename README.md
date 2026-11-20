@@ -64,17 +64,21 @@ Follow these steps to run the project locally.
 
 ## Build for Production
 
-To create a production build:
+Build with the final public HTTPS origin and run the production server.
 
 ```bash
-npm run build
+SITE_URL=https://your-domain.example npm run build
+npm start
 ```
 
-To run the production build:
+The build prerenders the home page, each calculator, the guide, informational pages and a 404 page into `dist/`. It generates the canonical URLs and sitemap from the same route list. Builds without `SITE_URL` carry `noindex` and omit the sitemap. The production server returns 404 for unknown routes, redirects known case, trailing-slash and index-file aliases to their canonical paths, and caches hashed assets. Serve it behind a host or reverse proxy with a valid TLS certificate and an HTTP-to-HTTPS and alternate-host redirect. On static hosting, configure extensionless route resolution and serve `404.html` with HTTP 404 rather than enabling a catch-all SPA rewrite. Add explicit HTTP 301 mappings when replacing live routes and use 410 for intentionally removed pages that have no replacement.
 
-```bash
-npm run start
-```
+### Search launch checks
+
+- Verify the public domain in Google Search Console and Bing Webmaster Tools. Submit `/sitemap.xml` in both accounts. Inspect the homepage and each calculator URL to confirm HTTP 200, crawlability and the selected canonical.
+- Run mobile PageSpeed Insights for the home page and representative calculators. Use field data when available and track LCP at or below 2.5 seconds, INP at or below 200 milliseconds and CLS at or below 0.1. Check desktop and mobile layouts, focus order, keyboard controls and internal links after deployment.
+- Monitor indexing errors and organic impressions, clicks, CTR, queries and landing pages. Use the search query data to refine the topic map and examples. Initial topics follow the tools’ actual purposes: fixed payments, payment splits, total interest, extra principal and payoff schedules, auto financing, HELOC payment modes and compound growth.
+- Review examples and lender-specific assumptions before changing calculator defaults. Keep key explanations visible in HTML and align structured data with page content.
 
 ## Project Structure
 
@@ -97,3 +101,19 @@ fintech-calculators/
 ## License
 
 This project is available for personal and educational use.
+
+### Keyword map
+
+Search volume and keyword difficulty come from the supplied research. The page targets follow the goal of each tool.
+
+| Primary or supporting query | Target |
+| --- | --- |
+| loan calculator | `/calculators/loan-calculator` |
+| loan payment calculator | `/calculators/loan-payment-calculator` |
+| loan amortization calculator | `/calculators/loan-amortization-calculator` |
+| loan interest calculator | `/calculators/loan-interest-calculator` |
+| vehicle loan calculator, loan calculator auto, car loan, car loans, auto finance calculator, vehicle finance calculator | `/calculators/auto-loan-calculator` |
+| HELOC loan calculator | `/calculators/heloc-calculator` |
+| auto loan rates, 2nd hand car loan rate, auto loan pre approval, used car finance rates, auto finance | `/guides#car-loans` |
+| home equity loan | `/guides#home-equity` |
+| title loans, title loan, student loan forgiveness for students, FHA loans for first time buyers, hardship loans, refinance mortgage loan, loan places | Separate search intent. These would require dedicated, sourced coverage or a matching tool before becoming page targets. |

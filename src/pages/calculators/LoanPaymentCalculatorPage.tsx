@@ -107,7 +107,7 @@ export function LoanPaymentCalculatorPage() {
   );
 
   const copySummaryText = [
-    `CALCULATE — Loan Payment Calculator Summary (${currencyInfo.code})`,
+    `EasyLoanCalc — Loan Payment Calculator Summary (${currencyInfo.code})`,
     `Loan Amount: ${formatCurrency(result.principal)}`,
     `Annual Rate: ${formatPercent(result.annualRate)}`,
     `Duration: ${result.months} months`,
@@ -120,10 +120,10 @@ export function LoanPaymentCalculatorPage() {
     <CalculatorLayout
       meta={meta}
       themeConfig={{
-        mode: 'light',
-        pageBgClass: 'bg-[#F4F6FB] text-[#14213D]',
-        cardBgClass: 'bg-white border-slate-200 text-[#14213D] shadow-xs',
-        accentTextClass: 'text-[#2563EB]',
+        mode: 'dark',
+        pageBgClass: 'bg-midnight-mesh text-white',
+        cardBgClass: 'bg-[#12142D] border-white/12 text-white',
+        accentTextClass: 'text-[#38BDF8]',
       }}
       onReset={() => {
         setUnit('years');
@@ -135,32 +135,32 @@ export function LoanPaymentCalculatorPage() {
       }}
       copySummaryText={copySummaryText}
       heroVisual={
-        /* Top Royal-Blue Curve Card matching Mid-Left Panel in Design */
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-xs">
+        /* Repayment schedule */
+        <div className="bg-[#12142D] rounded-2xl border border-white/12 p-6 sm:p-7">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
             <div>
-              <div className="text-xs font-semibold text-[#2563EB]">
+              <div className="text-xs font-semibold text-[#38BDF8]">
                 Repayment Schedule Curve · {currencyInfo.flag} {currencyInfo.code}
               </div>
-              <h2 className="font-display text-xl font-bold text-[#14213D]">
+              <h2 className="font-display text-xl font-bold text-white">
                 Monthly Payment:{' '}
                 <AnimatedNumber
                   value={result.monthlyPayment}
                   format="currency"
-                  className="font-mono text-[#2563EB]"
+                  className="font-mono text-[#38BDF8]"
                 />
               </h2>
             </div>
             <div className="flex items-center gap-6 text-sm">
               <div>
-                <div className="text-xs text-slate-500">Total Repayment</div>
-                <div className="font-mono font-bold text-[#14213D]">
+                <div className="text-xs text-slate-400">Total Repayment</div>
+                <div className="font-mono font-bold text-white">
                   <AnimatedNumber value={result.totalPayment} format="currency" />
                 </div>
               </div>
               <div>
-                <div className="text-xs text-slate-500">Total Interest</div>
-                <div className="font-mono font-bold text-[#2563EB]">
+                <div className="text-xs text-slate-400">Total Interest</div>
+                <div className="font-mono font-bold text-[#38BDF8]">
                   <AnimatedNumber value={result.totalInterest} format="currency" />
                 </div>
               </div>
@@ -171,34 +171,34 @@ export function LoanPaymentCalculatorPage() {
             <ResponsiveContainer width="100%" height="100%" minWidth={0}>
               <AreaChart data={curveData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
                 <defs>
-                  <linearGradient id="lightBlueArea" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#2563EB" stopOpacity={0.2} />
-                    <stop offset="95%" stopColor="#2563EB" stopOpacity={0} />
+                  <linearGradient id="loanPaymentBalanceGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#38BDF8" stopOpacity={0.2} />
+                    <stop offset="95%" stopColor="#38BDF8" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" vertical={false} />
                 <XAxis
                   dataKey="year"
-                  tick={{ fontSize: 12, fill: '#64748B' }}
+                  tick={{ fontSize: 12, fill: '#94A3B8' }}
                   tickFormatter={(v) => `Yr ${v}`}
                   axisLine={false}
                   tickLine={false}
                 />
                 <YAxis
-                  tick={{ fontSize: 12, fill: '#64748B' }}
+                  tick={{ fontSize: 12, fill: '#94A3B8' }}
                   tickFormatter={(v) => formatCompactCurrency(Number(v))}
                   axisLine={false}
                   tickLine={false}
                   width={68}
                 />
-                <Tooltip content={<ChartTooltip />} />
+                <Tooltip content={<ChartTooltip theme="dark" />} />
                 <Area
                   type="monotone"
                   dataKey="Remaining Balance"
-                  stroke="#2563EB"
+                  stroke="#38BDF8"
                   strokeWidth={2.5}
                   fillOpacity={1}
-                  fill="url(#lightBlueArea)"
+                  fill="url(#loanPaymentBalanceGradient)"
                 />
               </AreaChart>
             </ResponsiveContainer>
@@ -221,8 +221,8 @@ export function LoanPaymentCalculatorPage() {
             prefix={currencyInfo.symbol}
             minLabel={formatCompactCurrency(amountSpec.min)}
             maxLabel={formatCompactCurrency(amountSpec.sliderMax)}
-            theme="light"
-            accentColor="#2563EB"
+            theme="dark"
+            accentColor="#38BDF8"
           />
 
           <CalculatorField
@@ -239,21 +239,21 @@ export function LoanPaymentCalculatorPage() {
             suffix="% APR"
             minLabel="0%"
             maxLabel="24%"
-            theme="light"
-            accentColor="#2563EB"
+            theme="dark"
+            accentColor="#38BDF8"
           />
 
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-500">Duration Unit</span>
-              <div className="inline-flex p-0.5 bg-slate-100 rounded-lg border border-slate-200">
+              <span className="text-xs font-medium text-slate-400">Duration Unit</span>
+              <div className="inline-flex p-0.5 bg-white/5 rounded-lg border border-white/10">
                 <button
                   type="button"
                   onClick={() => handleUnitSwitch('years')}
                   className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
                     unit === 'years'
-                      ? 'bg-white text-[#14213D] shadow-xs'
-                      : 'text-slate-500 hover:text-[#14213D]'
+                      ? 'bg-[#38BDF8] text-[#090A1A]'
+                      : 'text-slate-300 hover:text-white'
                   }`}
                 >
                   Years
@@ -263,8 +263,8 @@ export function LoanPaymentCalculatorPage() {
                   onClick={() => handleUnitSwitch('months')}
                   className={`px-3 py-1 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
                     unit === 'months'
-                      ? 'bg-white text-[#14213D] shadow-xs'
-                      : 'text-slate-500 hover:text-[#14213D]'
+                      ? 'bg-[#38BDF8] text-[#090A1A]'
+                      : 'text-slate-300 hover:text-white'
                   }`}
                 >
                   Months
@@ -287,8 +287,8 @@ export function LoanPaymentCalculatorPage() {
               minLabel={unit === 'years' ? '1 yr' : '1 mo'}
               maxLabel={unit === 'years' ? '30 yrs' : '120 mos'}
               helperText={`${result.months} installments`}
-              theme="light"
-              accentColor="#2563EB"
+              theme="dark"
+              accentColor="#38BDF8"
             />
           </div>
         </>
@@ -297,41 +297,41 @@ export function LoanPaymentCalculatorPage() {
         <>
           {/* Principal-Interest Breakdown Card + Semi-Circular Gauge */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div className="md:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 flex flex-col items-center justify-center shadow-xs">
-              <div className="text-xs font-semibold text-slate-500 mb-3 self-start">
+            <div className="md:col-span-6 bg-[#12142D] rounded-2xl border border-white/12 p-6 flex flex-col items-center justify-center">
+              <div className="text-xs font-semibold text-slate-400 mb-3 self-start">
                 Principal-Interest Breakdown
               </div>
               <InterestGauge
                 percentage={result.principalSharePercent}
                 label="Principal Share"
                 sublabel={`${result.interestSharePercent.toFixed(1)}% goes to interest`}
-                theme="light"
+                theme="dark"
               />
             </div>
 
-            <div className="md:col-span-6 bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between gap-4 shadow-xs">
+            <div className="md:col-span-6 bg-[#12142D] rounded-2xl border border-white/12 p-6 flex flex-col justify-between gap-4">
               <div>
-                <div className="text-xs font-semibold text-slate-500">First Payment Split</div>
-                <div className="font-mono text-2xl font-bold text-[#14213D] mt-1">
+                <div className="text-xs font-semibold text-slate-400">First Payment Split</div>
+                <div className="font-mono text-2xl font-bold text-white mt-1">
                   <AnimatedNumber value={result.monthlyPayment} format="currency" suffix=" / mo" />
                 </div>
               </div>
               <div className="space-y-3 text-sm">
-                <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-600">Month 1 Principal</span>
-                  <span className="font-mono font-semibold text-[#10B981]">
+                <div className="flex items-center justify-between py-2 border-b border-white/10">
+                  <span className="text-slate-300">Month 1 Principal</span>
+                  <span className="font-mono font-semibold text-[#34D399]">
                     <AnimatedNumber value={result.firstMonthPrincipal} format="currency" />
                   </span>
                 </div>
-                <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-600">Month 1 Interest</span>
-                  <span className="font-mono font-semibold text-[#2563EB]">
+                <div className="flex items-center justify-between py-2 border-b border-white/10">
+                  <span className="text-slate-300">Month 1 Interest</span>
+                  <span className="font-mono font-semibold text-[#38BDF8]">
                     <AnimatedNumber value={result.firstMonthInterest} format="currency" />
                   </span>
                 </div>
                 <div className="flex items-center justify-between pt-1">
-                  <span className="font-medium text-[#14213D]">Total Repayment</span>
-                  <span className="font-mono font-bold text-[#14213D]">
+                  <span className="font-medium text-white">Total Repayment</span>
+                  <span className="font-mono font-bold text-white">
                     <AnimatedNumber value={result.totalPayment} format="currency" />
                   </span>
                 </div>
@@ -340,36 +340,36 @@ export function LoanPaymentCalculatorPage() {
           </div>
 
           {/* Annual Stacked Principal vs Interest Bar Chart */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 space-y-4 shadow-xs">
+          <div className="bg-[#12142D] rounded-2xl border border-white/12 p-6 space-y-4">
             <div>
-              <h3 className="font-display text-base font-bold text-[#14213D]">
+              <h3 className="font-display text-base font-bold text-white">
                 Annual Principal vs. Interest Paid
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-400">
                 Principal portion grows each year as outstanding debt shrinks
               </p>
             </div>
             <div className="h-56 w-full">
               <ResponsiveContainer width="100%" height="100%" minWidth={0}>
                 <BarChart data={curveData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" vertical={false} />
                   <XAxis
                     dataKey="year"
-                    tick={{ fontSize: 11, fill: '#64748B' }}
+                    tick={{ fontSize: 11, fill: '#94A3B8' }}
                     tickFormatter={(v) => `Y${v}`}
                     axisLine={false}
                     tickLine={false}
                   />
                   <YAxis
-                    tick={{ fontSize: 11, fill: '#64748B' }}
+                    tick={{ fontSize: 11, fill: '#94A3B8' }}
                     tickFormatter={(v) => formatCompactCurrency(Number(v))}
                     axisLine={false}
                     tickLine={false}
                     width={64}
                   />
-                  <Tooltip content={<ChartTooltip />} />
-                  <Bar dataKey="Principal Paid" stackId="a" fill="#2563EB" radius={[0, 0, 4, 4]} />
-                  <Bar dataKey="Interest Paid" stackId="a" fill="#10B981" radius={[4, 4, 0, 0]} />
+                  <Tooltip content={<ChartTooltip theme="dark" />} />
+                  <Bar dataKey="Principal Paid" stackId="a" fill="#38BDF8" radius={[0, 0, 4, 4]} />
+                  <Bar dataKey="Interest Paid" stackId="a" fill="#34D399" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

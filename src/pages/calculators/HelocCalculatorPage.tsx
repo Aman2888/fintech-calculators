@@ -93,7 +93,7 @@ export function HelocCalculatorPage() {
   );
 
   const copySummaryText = [
-    `CALCULATE — HELOC Calculator Summary (${currencyInfo.code})`,
+    `EasyLoanCalc — HELOC Calculator Summary (${currencyInfo.code})`,
     `Credit Line Balance: ${formatCurrency(result.creditBalance)}`,
     `Annual Rate: ${formatPercent(result.annualRate)}`,
     `Duration: ${result.durationYears} years`,
@@ -109,10 +109,10 @@ export function HelocCalculatorPage() {
     <CalculatorLayout
       meta={meta}
       themeConfig={{
-        mode: 'light',
-        pageBgClass: 'bg-[#F4F7FA] text-[#14213D]',
-        cardBgClass: 'bg-white border-slate-200 text-[#14213D] shadow-xs',
-        accentTextClass: 'text-[#0D9488]',
+        mode: 'dark',
+        pageBgClass: 'bg-midnight-mesh text-white',
+        cardBgClass: 'bg-[#12142D] border-white/12 text-white',
+        accentTextClass: 'text-[#2DD4BF]',
       }}
       onReset={() =>
         reset({
@@ -139,8 +139,8 @@ export function HelocCalculatorPage() {
             prefix={currencyInfo.symbol}
             minLabel={formatCompactCurrency(balanceSpec.min)}
             maxLabel={formatCompactCurrency(balanceSpec.sliderMax)}
-            theme="light"
-            accentColor="#14B8A6"
+            theme="dark"
+            accentColor="#2DD4BF"
           />
 
           <CalculatorField
@@ -157,8 +157,8 @@ export function HelocCalculatorPage() {
             suffix="% APR"
             minLabel="0%"
             maxLabel="18%"
-            theme="light"
-            accentColor="#14B8A6"
+            theme="dark"
+            accentColor="#2DD4BF"
           />
 
           <CalculatorField
@@ -175,12 +175,12 @@ export function HelocCalculatorPage() {
             suffix="Years"
             minLabel="1 yr"
             maxLabel="20 yrs"
-            theme="light"
-            accentColor="#2563EB"
+            theme="dark"
+            accentColor="#38BDF8"
           />
 
           <div className="space-y-2.5 pt-1">
-            <label className="block text-sm font-medium text-[#14213D]">
+            <label className="block text-sm font-medium text-white">
               Payment Type
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -190,8 +190,8 @@ export function HelocCalculatorPage() {
                 onClick={() => setValue('paymentType', 'interest-only')}
                 className={`px-4 py-3 rounded-xl border text-left transition-all cursor-pointer ${
                   paymentType === 'interest-only'
-                    ? 'border-[#14B8A6] bg-[#14B8A6]/12 text-[#0F766E] shadow-xs'
-                    : 'border-slate-200 bg-white text-[#14213D] hover:border-slate-300'
+                    ? 'border-[#2DD4BF] bg-[#2DD4BF]/12 text-[#99F6E4]'
+                    : 'border-white/12 bg-white/5 text-white hover:border-white/30'
                 }`}
               >
                 <div className="text-sm font-semibold">Interest Only</div>
@@ -204,8 +204,8 @@ export function HelocCalculatorPage() {
                 onClick={() => setValue('paymentType', 'principal-and-interest')}
                 className={`px-4 py-3 rounded-xl border text-left transition-all cursor-pointer ${
                   paymentType === 'principal-and-interest'
-                    ? 'border-[#2563EB] bg-[#2563EB]/10 text-[#1D4ED8] shadow-xs'
-                    : 'border-slate-200 bg-white text-[#14213D] hover:border-slate-300'
+                    ? 'border-[#38BDF8] bg-[#38BDF8]/10 text-[#BAE6FD]'
+                    : 'border-white/12 bg-white/5 text-white hover:border-white/30'
                 }`}
               >
                 <div className="text-sm font-semibold">Full Principal + Interest</div>
@@ -217,22 +217,21 @@ export function HelocCalculatorPage() {
       }
       resultsContent={
         <>
-          {/* Bottom-Right Light Airy Panel: 3D House + Soft Mint Payment Mode Bar */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+          <div className="bg-[#12142D] rounded-2xl border border-white/12 overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-12 items-center p-6 sm:p-7 gap-6">
               <div className="md:col-span-6 space-y-4">
                 <div>
-                  <div className="text-xs font-semibold text-[#0D9488]">
+                  <div className="text-xs font-semibold text-[#2DD4BF]">
                     {paymentType === 'interest-only'
                       ? `Interest-Only Monthly Payment (${currencyInfo.code})`
                       : `Full P&I Monthly Payment (${currencyInfo.code})`}
                   </div>
-                  <div className="font-mono text-4xl sm:text-5xl font-extrabold text-[#14213D] mt-1">
+                  <div className="font-mono text-4xl sm:text-5xl font-extrabold text-white mt-1">
                     <AnimatedNumber value={result.monthlyPayment} format="currency" />
                   </div>
                 </div>
 
-                <div className="rounded-xl bg-[#CCFBF1] px-4 py-3 text-[#115E59] flex items-center justify-between">
+                <div className="rounded-xl border border-teal-400/20 bg-teal-400/10 px-4 py-3 text-teal-200 flex items-center justify-between">
                   <span className="text-xs font-bold">Total Repayment</span>
                   <span className="font-mono text-base font-extrabold">
                     <AnimatedNumber value={result.totalRepayment} format="currency-int" />
@@ -240,15 +239,15 @@ export function HelocCalculatorPage() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="rounded-xl bg-slate-50 border border-slate-200 p-3">
-                    <div className="text-slate-500">Total Interest</div>
-                    <div className="font-mono text-sm font-bold text-[#2563EB] mt-0.5">
+                  <div className="rounded-xl bg-black/25 border border-white/10 p-3">
+                    <div className="text-slate-400">Total Interest</div>
+                    <div className="font-mono text-sm font-bold text-[#38BDF8] mt-0.5">
                       <AnimatedNumber value={result.totalInterest} format="currency-int" />
                     </div>
                   </div>
-                  <div className="rounded-xl bg-slate-50 border border-slate-200 p-3">
-                    <div className="text-slate-500">Ending Balance</div>
-                    <div className="font-mono text-sm font-bold text-[#14213D] mt-0.5">
+                  <div className="rounded-xl bg-black/25 border border-white/10 p-3">
+                    <div className="text-slate-400">Ending Balance</div>
+                    <div className="font-mono text-sm font-bold text-white mt-0.5">
                       <AnimatedNumber value={result.remainingBalanceAtTermEnd} format="currency-int" />
                     </div>
                   </div>
@@ -266,23 +265,23 @@ export function HelocCalculatorPage() {
           </div>
 
           {/* HELOC Cumulative Comparison Chart */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 space-y-5 shadow-xs">
+          <div className="bg-[#12142D] rounded-2xl border border-white/12 p-6 sm:p-7 space-y-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h3 className="font-display text-base font-bold text-[#14213D]">
+                <h3 className="font-display text-base font-bold text-white">
                   HELOC Balance &amp; Outflow Comparison
                 </h3>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-400">
                   Compare selected payment mode against alternative repayment structure
                 </p>
               </div>
-              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300">
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-xs bg-[#14B8A6]" />
+                  <span className="w-2.5 h-2.5 rounded-xs bg-[#2DD4BF]" />
                   Balance
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-xs bg-[#2563EB]" />
+                  <span className="w-2.5 h-2.5 rounded-xs bg-[#38BDF8]" />
                   Selected Paid
                 </span>
                 <span className="inline-flex items-center gap-1.5">
@@ -295,33 +294,33 @@ export function HelocCalculatorPage() {
             <div className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%" minWidth={0}>
                 <LineChart data={chartData} margin={{ top: 10, right: 12, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" vertical={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.08)" vertical={false} />
                   <XAxis
                     dataKey="year"
-                    tick={{ fontSize: 12, fill: '#64748B' }}
+                    tick={{ fontSize: 12, fill: '#94A3B8' }}
                     tickFormatter={(v) => `Yr ${v}`}
                     axisLine={false}
                     tickLine={false}
                   />
                   <YAxis
-                    tick={{ fontSize: 12, fill: '#64748B' }}
+                    tick={{ fontSize: 12, fill: '#94A3B8' }}
                     tickFormatter={(v) => formatCompactCurrency(Number(v))}
                     axisLine={false}
                     tickLine={false}
                     width={68}
                   />
-                  <Tooltip content={<ChartTooltip />} />
+                  <Tooltip content={<ChartTooltip theme="dark" />} />
                   <Line
                     type="monotone"
                     dataKey="Remaining Balance"
-                    stroke="#14B8A6"
+                    stroke="#2DD4BF"
                     strokeWidth={2.5}
                     dot={false}
                   />
                   <Line
                     type="monotone"
                     dataKey="Selected Cumulative Paid"
-                    stroke="#2563EB"
+                    stroke="#38BDF8"
                     strokeWidth={2.5}
                     dot={false}
                   />

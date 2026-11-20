@@ -1,3 +1,4 @@
+import { BrandLogo } from './BrandLogo';
 import { Link } from 'react-router-dom';
 import { CALCULATORS_META } from '../data/calculatorsMeta';
 
@@ -26,12 +27,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
           {/* Brand & Contact */}
           <div className="md:col-span-4 space-y-4">
-            <Link
-              to="/"
-              className="font-display text-xl font-extrabold tracking-tight text-white inline-block"
-            >
-              CALCULATE
-            </Link>
+            <BrandLogo />
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               Money Moves. Made Simple. Instant client-side calculations for loans,
               amortization, auto financing, HELOCs, and compounding wealth.
@@ -44,9 +40,9 @@ export function Footer() {
 
           {/* Calculator Links */}
           <div className="md:col-span-4">
-            <h3 className="font-display text-sm font-semibold text-white mb-4">
+            <h2 className="font-display text-sm font-semibold text-white mb-4">
               All 7 Calculators
-            </h3>
+            </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2.5 text-sm">
               {CALCULATORS_META.map((calc) => (
                 <li key={calc.slug}>
@@ -63,13 +59,18 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="md:col-span-2">
-            <h3 className="font-display text-sm font-semibold text-white mb-4">
+            <h2 className="font-display text-sm font-semibold text-white mb-4">
               Explore
-            </h3>
+            </h2>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link to="/" className="text-slate-400 hover:text-white transition-colors">
                   Homepage
+                </Link>
+              </li>
+              <li>
+                <Link to="/guides" className="text-slate-400 hover:text-white transition-colors">
+                  Calculator Guides
                 </Link>
               </li>
               <li>
@@ -87,9 +88,9 @@ export function Footer() {
 
           {/* Legal */}
           <div className="md:col-span-2">
-            <h3 className="font-display text-sm font-semibold text-white mb-4">
+            <h2 className="font-display text-sm font-semibold text-white mb-4">
               Legal
-            </h3>
+            </h2>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link to="/privacy" className="text-slate-400 hover:text-white transition-colors">
@@ -106,7 +107,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {currentYear} CALCULATE Financial Tools. All rights reserved.</p>
+          <p>© {currentYear} EasyLoanCalc Financial Tools. All rights reserved.</p>
           <p className="text-slate-500">
             Estimates are for educational planning and do not constitute financial advice.
           </p>

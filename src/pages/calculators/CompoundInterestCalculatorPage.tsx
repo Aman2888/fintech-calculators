@@ -111,7 +111,7 @@ export function CompoundInterestCalculatorPage() {
   );
 
   const copySummaryText = [
-    `CALCULATE — Compound Interest Summary (${currencyInfo.code})`,
+    `EasyLoanCalc — Compound Interest Summary (${currencyInfo.code})`,
     `Initial Investment: ${formatCurrency(result.initialInvestment)}`,
     `Monthly Contribution: ${formatCurrency(result.monthlyContribution)}`,
     `Annual Return Rate: ${formatPercent(result.annualRate)}`,

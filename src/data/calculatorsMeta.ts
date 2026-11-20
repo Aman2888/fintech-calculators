@@ -39,7 +39,7 @@ export const CALCULATORS_META: CalculatorMeta[] = [
     category: 'loan',
     categoryLabel: 'Loan Planning · Core Payment',
     description:
-      'Estimate your fixed monthly payment, total interest cost, and full repayment obligation for personal, business, or installment loans.',
+      'Use this loan calculator to estimate the monthly payment, total interest and total repayment on a fixed-rate installment loan.',
     shortDescription:
       'Calculate fixed monthly payments, total repayment, and lifetime interest on any standard loan.',
     iconName: 'Calculator',
@@ -80,7 +80,7 @@ export const CALCULATORS_META: CalculatorMeta[] = [
     category: 'loan',
     categoryLabel: 'Loan Planning · P&I Split',
     description:
-      'Visualize how each payment splits between principal reduction and interest expense across your entire repayment schedule.',
+      'Use the loan payment calculator to estimate your monthly installment and see how each payment divides between principal and interest.',
     shortDescription:
       'Analyze monthly payment affordability alongside annual principal-versus-interest visual charts.',
     iconName: 'Wallet',
@@ -121,7 +121,7 @@ export const CALCULATORS_META: CalculatorMeta[] = [
     category: 'loan',
     categoryLabel: 'Cost Analysis · Borrowing Expense',
     description:
-      'Measure the true borrowing cost of a loan by isolating total lifetime interest, interest percentage of total cost, and interest-to-principal ratio.',
+      'Use the loan interest calculator to estimate total interest paid, compare it with the amount borrowed and see how interest adds up over time.',
     shortDescription:
       'Quantify total interest paid, effective cost percentage, and interest burden before you sign.',
     iconName: 'Percent',
@@ -161,7 +161,7 @@ export const CALCULATORS_META: CalculatorMeta[] = [
     category: 'loan',
     categoryLabel: 'Payoff Strategy · Extra Payments',
     description:
-      'Generate a complete month-by-month amortization schedule and see how extra monthly principal payments shorten your payoff timeline and save interest.',
+      'Use the loan amortization calculator to build a monthly payoff schedule and estimate how extra principal payments affect your payoff date and interest.',
     shortDescription:
       'Simulate extra monthly payments, view full amortization tables, and pinpoint your early payoff date.',
     iconName: 'TableProperties',
@@ -202,7 +202,7 @@ export const CALCULATORS_META: CalculatorMeta[] = [
     category: 'auto-credit',
     categoryLabel: 'Vehicle Financing · Dealership Math',
     description:
-      'Evaluate car financing offers by factoring vehicle price, cash or trade-in down payment, APR, and loan term into clear monthly and total cost figures.',
+      'Use this auto finance calculator to estimate monthly car loan payments and total interest. Compare rates, down payments and terms for new or used cars.',
     shortDescription:
       'Factor car price, down payment, APR, and term to see net financed principal and monthly payments.',
     iconName: 'Car',
@@ -217,14 +217,14 @@ export const CALCULATORS_META: CalculatorMeta[] = [
     ],
     faqs: [
       {
-        question: 'How much should I put down on a car loan?',
+        question: 'Can I use this calculator for a used car loan?',
         answer:
-          'Financial planners typically recommend 15% to 20% down on a new vehicle to avoid negative equity (owing more than the car is worth) during early depreciation.',
+          'Yes. Enter the used car price, down payment, annual interest rate and loan term. Use the rate from your financing offer, then vary the rate to compare monthly payments and total interest.',
       },
       {
-        question: 'Is a 72- or 84-month auto loan a good idea?',
+        question: 'How does a longer car loan term affect the cost?',
         answer:
-          'Longer terms lower your monthly payment but dramatically raise total interest and keep you upside-down on vehicle value longer. A 36- to 60-month term balances cost and flexibility.',
+          'At the same positive interest rate and loan amount, a longer term usually lowers each monthly payment and increases total interest. Compare two terms with the other inputs held constant.',
       },
       {
         question: 'Does this include sales tax or registration fees?',
@@ -242,7 +242,7 @@ export const CALCULATORS_META: CalculatorMeta[] = [
     category: 'auto-credit',
     categoryLabel: 'Home Equity · Credit Line',
     description:
-      'Compare Interest-Only draw period payments against Full Principal + Interest repayment on a Home Equity Line of Credit.',
+      'Estimate monthly payments on a home equity line of credit with the HELOC calculator. Compare interest-only payments with principal-and-interest repayment.',
     shortDescription:
       'Compare Interest-Only draw payments versus Full Principal + Interest payoff for your HELOC balance.',
     iconName: 'Home',
@@ -266,6 +266,11 @@ export const CALCULATORS_META: CalculatorMeta[] = [
         question: 'Why does Total Repayment under Interest-Only include the credit balance?',
         answer:
           'Because interest-only payments do not reduce principal, you still owe the full drawn balance at the end of the period in addition to all interest paid.',
+      },
+      {
+        question: 'How is a HELOC different from a home equity loan?',
+        answer:
+          'A home equity loan pays out a lump sum. A HELOC lets you draw from an available credit limit over time. Use this calculator to estimate payments on the amount drawn on a HELOC.',
       },
       {
         question: 'Are HELOC interest rates fixed or variable?',

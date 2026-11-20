@@ -1,3 +1,4 @@
+import { BrandLogo } from './BrandLogo';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowRight, Menu, Search, X } from 'lucide-react';
@@ -59,14 +60,9 @@ export function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-40 w-full bg-[#0B0C1E]/92 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-8">
           {/* Zone 1: Single-line Brand Wordmark */}
-          <Link
-            to="/"
-            className="font-display text-lg sm:text-xl font-extrabold tracking-tight text-white whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#B4F434] rounded"
-          >
-            CALCULATE
-          </Link>
+          <BrandLogo compact />
 
           {/* Zone 2: Clean Single-line Nav Links */}
           <nav

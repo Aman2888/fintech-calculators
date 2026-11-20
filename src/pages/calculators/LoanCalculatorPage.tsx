@@ -91,7 +91,7 @@ export function LoanCalculatorPage() {
   );
 
   const copySummaryText = [
-    `CALCULATE — Loan Calculator Summary (${currencyInfo.code})`,
+    `EasyLoanCalc — Loan Calculator Summary (${currencyInfo.code})`,
     `Loan Amount: ${formatCurrency(result.principal)}`,
     `Annual Rate: ${formatPercent(result.annualRate)}`,
     `Loan Term: ${loanTermYears} years (${result.months} months)`,

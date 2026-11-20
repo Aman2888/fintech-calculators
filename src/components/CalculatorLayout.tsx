@@ -1,6 +1,6 @@
-import { type ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AnimatePresence, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import {
   AlertTriangle,
   ArrowRight,
@@ -13,6 +13,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
+import { calculatorExamples } from '../data/calculatorExamples';
 import { CALCULATORS_META, type CalculatorMeta } from '../data/calculatorsMeta';
 import { CalculatorIcon } from './CalculatorIcon';
 import { RevealSection } from './motion/RevealSection';
@@ -47,17 +48,8 @@ export function CalculatorLayout({
   copySummaryText,
 }: CalculatorLayoutProps) {
   const [copied, setCopied] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const { currency, currencyInfo, rateError, rateStatus, refreshRates } = useCurrency();
   const isDark = themeConfig.mode === 'dark';
-
-  useEffect(() => {
-    document.title = `${meta.name} | CALCULATE`;
-    const descTag = document.querySelector('meta[name="description"]');
-    if (descTag) {
-      descTag.setAttribute('content', meta.description);
-    }
-  }, [meta]);
 
   const relatedCalculators = meta.relatedSlugs
     .map((slug) => CALCULATORS_META.find((c) => c.slug === slug))
@@ -119,12 +111,12 @@ export function CalculatorLayout({
               Calculators
             </Link>
             <ChevronRight className="w-3.5 h-3.5 opacity-60" aria-hidden="true" />
-            <span className={isDark ? 'text-white' : 'text-[#14213D]'}>{meta.name}</span>
+            <span aria-current="page" className={isDark ? 'text-white' : 'text-[#14213D]'}>{meta.name}</span>
           </nav>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl space-y-2.5"
@@ -224,7 +216,7 @@ export function CalculatorLayout({
 
         {heroVisual && (
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="mb-8"
@@ -234,7 +226,7 @@ export function CalculatorLayout({
         )}
 
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.32, delay: 0.04, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
@@ -335,6 +327,14 @@ export function CalculatorLayout({
               {meta.formulaSummary}
             </p>
 
+            <div className="space-y-2">
+              <h3 className="font-display text-base font-semibold">Worked example in USD</h3>
+              <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+                {calculatorExamples[meta.slug]}
+              </p>
+              <Link to="/guides" className="inline-block text-sm underline">Read the loan and savings guide</Link>
+            </div>
+
             <div
               className={`border-t pt-4 space-y-2.5 ${
                 isDark ? 'border-white/10' : 'border-slate-100'
@@ -381,54 +381,20 @@ export function CalculatorLayout({
             </div>
 
             <div className={`divide-y ${isDark ? 'divide-white/10' : 'divide-slate-200'}`}>
-              {meta.faqs.map((faq, idx) => {
-                const isOpen = openFaq === idx;
-                return (
-                  <div key={faq.question} className="py-4 first:pt-1 last:pb-1">
-                    <button
-                      type="button"
-                      onClick={() => setOpenFaq(isOpen ? null : idx)}
-                      aria-expanded={isOpen}
-                      className="w-full flex items-center justify-between gap-4 text-left cursor-pointer group"
-                    >
-                      <span
-                        className={`text-sm font-semibold transition-colors ${
-                          isDark
-                            ? 'text-white group-hover:text-[#B4F434]'
-                            : 'text-[#14213D] group-hover:text-[#2563EB]'
-                        }`}
-                      >
-                        {faq.question}
-                      </span>
-                      <ChevronDown
-                        className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
-                          isDark ? 'text-slate-400' : 'text-slate-500'
-                        } ${isOpen ? 'rotate-180' : ''}`}
-                        aria-hidden="true"
-                      />
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                          className="overflow-hidden"
-                        >
-                          <p
-                            className={`mt-2.5 text-sm leading-relaxed ${
-                              isDark ? 'text-slate-300' : 'text-slate-600'
-                            }`}
-                          >
-                            {faq.answer}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                );
-              })}
+              {meta.faqs.map((faq, index) => (
+                <details key={faq.question} open={index === 0} className="group py-4 first:pt-1 last:pb-1">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold [&::-webkit-details-marker]:hidden">
+                    {faq.question}
+                    <ChevronDown
+                      className="h-4 w-4 shrink-0 text-slate-400 transition-transform group-open:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </summary>
+                  <p className={`mt-2.5 text-sm leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
             </div>
           </div>
         </RevealSection>

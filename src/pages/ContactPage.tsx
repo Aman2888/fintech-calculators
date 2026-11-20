@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { CheckCircle2, Mail, MapPin, Send } from 'lucide-react';
 
@@ -25,10 +25,6 @@ export function ContactPage() {
     },
   });
 
-  useEffect(() => {
-    document.title = 'Contact | CALCULATE';
-  }, []);
-
   const onSubmit = () => {
     setSubmitted(true);
     reset();
@@ -40,7 +36,7 @@ export function ContactPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-3">
           <div className="text-xs font-semibold text-[#B4F434]">Contact</div>
           <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-            Get in Touch with CALCULATE
+            Get in Touch with EasyLoanCalc
           </h1>
           <p className="text-base text-slate-300 max-w-2xl">
             Have a question about a financial formula, want to suggest a new calculator, or

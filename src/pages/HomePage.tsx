@@ -91,10 +91,6 @@ export function HomePage() {
   );
 
   useEffect(() => {
-    document.title = 'CALCULATE — Money Moves. Made Simple. | Financial Calculators';
-  }, []);
-
-  useEffect(() => {
     const paramCat = searchParams.get('category') as FilterTab | null;
     if (paramCat && ['all', 'loan', 'auto-credit', 'investment'].includes(paramCat)) {
       setActiveFilter(paramCat);
@@ -135,7 +131,7 @@ export function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 space-y-6"

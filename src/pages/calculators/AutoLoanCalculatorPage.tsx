@@ -111,7 +111,7 @@ export function AutoLoanCalculatorPage() {
   }));
 
   const copySummaryText = [
-    `CALCULATE — Auto Loan Summary (${currencyInfo.code})`,
+    `EasyLoanCalc — Auto Loan Summary (${currencyInfo.code})`,
     `Car Price: ${formatCurrency(result.carPrice)}`,
     `Down Payment: ${formatCurrency(result.downPayment)} (${result.downPaymentPercent.toFixed(1)}%)`,
     `Loan Amount Financed: ${formatCurrency(result.principal)}`,
