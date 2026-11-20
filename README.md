@@ -1,20 +1,99 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Fintech Calculators
 
-# Run and deploy your AI Studio app
+A modern and user-friendly financial calculator platform designed to help users make smarter financial decisions.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/4237c4ae-723e-4349-904d-50e5df9777f6
+- Loan Calculator
+- Loan Payment Calculator
+- Loan Interest Calculator
+- Loan Amortization Calculator
+- Auto Loan Calculator
+- HELOC Calculator
+- Compound Interest Calculator
+- Multiple currency display options
+- Responsive design for desktop, tablet, and mobile
+- Interactive financial calculations and visualizations
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+Follow these steps to run the project locally.
 
+### Prerequisites
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Node.js
+- npm
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Aman2888/fintech-calculators.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd fintech-calculators
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Configure environment variables.
+
+   If your project uses the Gemini API, create a `.env.local` file in the root directory and add:
+
+   ```env
+   GEMINI_API_KEY=your_api_key_here
+   ```
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Open your browser and visit:
+
+   `http://localhost:3000`
+
+## Build for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+To run the production build:
+
+```bash
+npm run start
+```
+
+## Project Structure
+
+```text
+fintech-calculators/
+├── public/
+├── src/
+├── .env.local
+├── package.json
+├── README.md
+└── ...
+```
+
+## Security
+
+- Keep API keys and sensitive credentials private.
+- Never commit `.env.local` to GitHub.
+- Use environment variables for sensitive configuration.
+
+## License
+
+This project is available for personal and educational use.
